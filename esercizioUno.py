@@ -1,6 +1,3 @@
-
-
-
 import random
 
 #funzione che permette la distanza di 9 posizioni da un numero ad un altro
@@ -25,10 +22,8 @@ i=i+10
 
 secNum = random.randint(0,9)
 
-if(numeri[0] == secNum):
-    print(numeri[0])
-    print("non sono ammessi numeri uguali consecutivi\n")
-else:
+if(numeri[0] != secNum):
+
     numeri.insert(i, secNum)
     novePause(numeri)
     i=i+10
@@ -39,11 +34,14 @@ else:
         newNum = random.randint(0,9)
         if(numeri[i-10] == newNum):
             print('non sono ammessi numeri uguali consecutivi\n')
-            print('fine')
+            print('Termina con un array < 70')
             break
         numeri.insert(i,newNum)
         novePause(numeri)
         i=i+10
+    else:
+        print("non sono ammessi numeri uguali consecutivi\n")
+        
 
 print(len(numeri))
 print(numeri)
