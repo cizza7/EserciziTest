@@ -5,7 +5,6 @@ def novePause(arrayNumeri):
     j = 0
     for j in range (0,9):
         arrayNumeri.append("*")
-
     return(arrayNumeri)
 
 
@@ -20,10 +19,11 @@ numeri.insert(i,firstNum)
 novePause(numeri)
 i=i+10
 
+
+#secondo inserimento
 secNum = random.randint(0,9)
-
+#verifica che primo e secondo non siano uguali
 if(numeri[0] != secNum):
-
     numeri.insert(i, secNum)
     novePause(numeri)
     i=i+10
@@ -36,13 +36,14 @@ if(numeri[0] != secNum):
             print('non sono ammessi numeri uguali consecutivi\n')
             print('Termina con un array < 70')
             break
+            
         numeri.insert(i,newNum)
         novePause(numeri)
         i=i+10
+        
     else:
         print("non sono ammessi numeri uguali consecutivi\n")
         
-
 print(len(numeri))
 print(numeri)
 print('FINE')
