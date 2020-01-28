@@ -1,49 +1,33 @@
 import random
 
-#funzione che permette la distanza di 9 posizioni da un numero ad un altro
-def novePause(arrayNumeri):
-    j = 0
-    for j in range (0,9):
-        arrayNumeri.append("*")
-    return(arrayNumeri)
-
-
-#array numeri
 numeri = []
+noveNumeri = []
 
+#controlla se il numero generato è gia presente all'interno dell'array di appoggio
+def confronto(numero,arrayNumeri):
 
-#primo inserimento
-i = 0
-firstNum= random.randint(0,9)
-numeri.insert(i,firstNum)
-novePause(numeri)
-i=i+10
-
-
-#secondo inserimento
-secNum = random.randint(0,9)
-#verifica che primo e secondo non siano uguali
-if(numeri[0] != secNum):
-    numeri.insert(i, secNum)
-    novePause(numeri)
-    i=i+10
-
-    #inserimenti successivi al primo
-    while(len(numeri)<70):
-        #numeri generati randomicamente tra 0 e 9
-        newNum = random.randint(0,9)
-        if(numeri[i-10] == newNum):
-            print('non sono ammessi numeri uguali consecutivi\n')
-            print('Termina con un array < 70')
-            break
-            
-        numeri.insert(i,newNum)
-        novePause(numeri)
-        i=i+10
-        
+    #se presente ne genera un altro e richiama se stessa ricorsivamente
+    if(numero in arrayNumeri):
+        newNumero = random.randint(0, 9)
+        confronto(newNumero,arrayNumeri)
     else:
-        print("non sono ammessi numeri uguali consecutivi\n")
-        
-print(len(numeri))
-print(numeri)
-print('FINE')
+        #altrimenti aggiunge il numero all'array di appoggio
+        arrayNumeri.append(numero)
+
+
+#genera un intero random tra 0 e 9 e chiama il confronto
+def addNum():
+        numero = random.randint(0, 9)
+        confronto(numero, noveNumeri)
+
+
+for j in range(7):
+    for i in range(10):
+        addNum()
+    #ogni 10 numeri inseriti diversi tra loro, si inserisce il contenuto nell'array numeri e si pulisce l'array di appoggio
+    numeri=numeri + noveNumeri
+    del noveNumeri[0:10]
+
+print("\nla dimensione dell'array è:",len(numeri))
+print("l'array è : \n",numeri)
+print("\n FINE")
